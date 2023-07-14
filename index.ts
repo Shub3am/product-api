@@ -67,6 +67,7 @@ app.post("/product/new", (req, res) => {
 
 app.put("/product/:id", (req, res) => {
   let id = req.params.id;
+  let token = "something"; //We can authorize the user before proceeding
   const { title, price, tags, thumbnail } = req.body; //We are assuming user wants to change one of these data
   let oldRecord = database.filter((product, index) => {
     if (product.id == id) {
@@ -99,6 +100,7 @@ app.put("/product/:id", (req, res) => {
 
 app.delete("/product/:id", (req, res) => {
   let id = req.params.id;
+  let token = "something"; //We can authorize the user before proceeding
   let checkRecords = database.filter((product, index) => {
     return product.id == id;
   });
